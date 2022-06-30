@@ -1,4 +1,4 @@
-package zane;
+package com.zane;
 
 import org.junit.Assert;
 import org.junit.Test;
