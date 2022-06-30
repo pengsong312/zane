@@ -5,14 +5,9 @@ package com.zane.domain.factory;
  * @since: 2022/6/30  3:41 PM
  * @version: 1.0.0
  */
-public class DomainFactory<T> {
+public class DomainFactory<T>{
 
-    public static <T> T newInstance(Class<T> clazz) {
-        try {
-            return clazz.newInstance();
-        } catch (Exception e) {
-            return null;
-        }
+    public static <T> T get(Class<T> entityClz){
+        return ApplicationContextHelper.getBean(entityClz);
     }
-
 }

@@ -1,8 +1,10 @@
 package com.zane.application.impl;
 
+import com.zane.adapter.dto.UserDTO;
 import com.zane.application.inf.UserService;
-import com.zane.dto.UserDTO;
-import com.zane.mapper.UserMapper;
+import com.zane.domain.factory.DomainFactory;
+import com.zane.domain.user.UserDomain;
+import com.zane.domain.user.UserDomainService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -17,28 +19,18 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Resource
-    private UserMapper userMapper;
+    private UserDomainService userDomainService;
 
     public List<UserDTO> list() {
-//        List<UserDTO> users = Lists.newArrayListWithExpectedSize(10);
-//        for (int i = 0; i < 10; i++) {
-//            UserDTO userDTO = DomainFactory.newInstance(UserDTO.class);
-//            userDTO.setId(i);
-//            userDTO.setName("name_" + i);
-//            userDTO.setAge(i);
-//
-//            users.add(userDTO);
-//        }
-//        return users;
-
-        return userMapper.list();
+        return userDomainService.pageQuery();
     }
 
-    public UserDTO add(String name, int age){
-        UserDTO user = new UserDTO();
-        user.setName(name);
-        user.setAge(age);
+    public int add(String name, int age){
+        UserDomain userDomain = DomainFactory.get(UserDomain.class);
+        userDomain.setName(name);
+        userDomain.setAge(age);
 
-        return userMapper.add(user) >= 1 ? user : null;
+        userDomain.save();
+        return userDomain.getId();
     }
 }

@@ -1,6 +1,7 @@
 package com.zane.application.inf;
 
-import com.zane.dto.UserDTO;
+
+import com.zane.adapter.dto.UserDTO;
 
 import java.util.List;
 
@@ -15,5 +16,5 @@ public interface UserService {
      */
     List<UserDTO> list();
 
-    UserDTO add(String name, int age);
+    int add(String name, int age);
 }

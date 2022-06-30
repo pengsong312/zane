@@ -1,4 +1,4 @@
-package com.zane.dto;
+package com.zane.adapter.dto;
 
 import lombok.Data;
 

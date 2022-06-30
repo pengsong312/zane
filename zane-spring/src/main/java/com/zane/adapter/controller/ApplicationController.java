@@ -1,9 +1,12 @@
-package com.zane.controller;
+package com.zane.adapter.controller;
 
+import com.zane.adapter.dto.UserDTO;
 import com.zane.application.inf.UserService;
-import com.zane.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -25,7 +28,7 @@ public class ApplicationController {
     }
 
     @RequestMapping("/user/add")
-    public UserDTO add(@RequestParam("name") String name, @RequestParam("age") Integer age) {
+    public int add(@RequestParam("name") String name, @RequestParam("age") Integer age) {
         return userService.add(name, age);
     }
 }
