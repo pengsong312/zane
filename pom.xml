@@ -13,6 +13,7 @@
         <module>zane-mybatis</module>
         <module>zane-spring</module>
         <module>zane-leetcode</module>
+        <module>zane-basis</module>
     </modules>
 
     <properties>
